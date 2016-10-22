@@ -1,0 +1,43 @@
+# .calculator_config.yml
+
+en:
+  adding: 'Adding the two numbers....'
+  dividing: 'Dividing the two numbers....'
+  :complain_name: Make sure to use a valid name.
+  :complain_number: Hmm... that doesn't look like a valid number.
+  :complain_operator: Must choose 1, 2, 3, or 4.
+  :greeting: 'Hi, %{name}!'
+  :main_loop: Do you want to perform another calculation? (Y to calculate again.)
+  multiplying: 'Multiplying the two numbers....'
+  :request_name: 'Welcome to Calculator! Enter your name:'
+  :request_number1: What's the first number?
+  :request_number2: What's the second number?
+  :request_operator: |
+    What operation would you like to perform?
+    1) add
+    2) subtract
+    3) multiply
+    4) divide
+  :result: 'The result is %{result}'
+  subtracting: 'Subtracting the two numbers....'
+
+es:
+  adding: 'La adición de los dos números....'
+  dividing: 'La división de los dos números....'
+  :complain_name: Asegúrese de utilizar un nombre válido.
+  :complain_number: Hmm ... que no se ve como un número válido.
+  :complain_operator: Debe elegir 1 , 2 , 3 , o 4.
+  :greeting: 'Hola, %{name}!'
+  :main_loop: ¿Quieres realizar otro cálculo ? ( Y para calcular de nuevo. )
+  multiplying: 'Multiplicando los dos números....'
+  :request_name: 'Bienvenido a la calculadora ! Introduzca su nombre:'
+  :request_number1: ¿Cuál es la primera serie?
+  :request_number2: ¿Cuál es el segundo número?
+  :request_operator: |
+    ¿Qué operación desea realizar ?
+    1 ) adición
+    2 ) sustracción
+    3 ) multiplicación
+    4 ) división
+  :result: 'El resultado es %{result}'
+  subtracting: 'Restando los dos números....'
