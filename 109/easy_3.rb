@@ -113,6 +113,25 @@
 
 
 # Palindromic Strings (Part 1)
-def palindrome?(string)
-  string == string.reverse
+def palindrome?(obj)
+  obj == obj.reverse
 end
+
+# same thing for arrays
+
+
+
+# Palindromic Strings (Part 2)
+def real_palindrome?(string)
+  filtered = string.gsub(/[^a-zA-Z0-9]/, '')
+  palindrome?(filtered.downcase)
+end
+
+
+
+# Palindromic Numbers
+def palindromic_number?(number)
+  palindrome?(number.to_s)
+end
+
+# This will not work on integers with leading 0s - they are interpreted as octal numbers.
