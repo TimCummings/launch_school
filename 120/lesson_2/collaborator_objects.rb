@@ -1,0 +1,1 @@
+# collaborator_objects.rb
