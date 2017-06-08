@@ -1,7 +1,5 @@
 # improved_twenty_one.rb
 
-require 'pry'
-
 class Card
   SUITS = [:spades, :hearts, :clubs, :diamonds]
   VALUES = %w[2 3 4 5 6 7 8 9 10 Jack Queen King Ace]
