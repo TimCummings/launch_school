@@ -63,7 +63,8 @@ class Player
   end
 
   def set_name
-    puts 'Please tell me your name, or I\'ll have to come up with something to call you - '
+    puts 'Please enter your name.'
+    puts 'Otherwise, I\'ll have to come up with something to call you - '
     entry = gets.chomp
     @name = if entry.empty?
               DEFAULT_NAMES.sample
@@ -129,37 +130,19 @@ class Dealer < Player
   end
 end
 
-class TwentyOneGame
-  BUST_OVER = 21
-  DEALER_STAYS = 17
-
-  attr_reader :human, :dealer, :deck
-
-  def initialize
-    @human = Player.new
-    @dealer = Dealer.new
-    @deck = Deck.new
-  end
-
-  def introductions
-    display_greeting
-    setup_game
-    introduce_players
-  end
-
+module Printable
   def clear
     system 'clear'
+  end
+
+  def invalid_choice
+    puts 'Invalid choice, please try again.'
   end
 
   def display_greeting
     clear
     puts 'Welcome to Twenty One. Enjoy the game!'
     puts
-  end
-
-  def setup_game
-    human.set_name
-    dealer.set_name
   end
 
   def introduce_players
@@ -186,6 +169,47 @@ class TwentyOneGame
     puts
   end
 
+  def display_game_results
+    puts
+    puts 'Games won:'
+    puts "#{human}: #{human.score}"
+    puts "#{dealer}: #{dealer.score}"
+    puts
+  end
+
+  def display_goodbye
+    puts
+    puts 'Thanks for playing Twenty One. Goodbye!'
+  end
+end
+
+class TwentyOneGame
+  include Printable
+
+  BUST_OVER = 21
+  DEALER_STAYS = 17
+
+  attr_reader :human, :dealer, :deck
+
+  def initialize
+    @human = Player.new
+    @dealer = Dealer.new
+    @deck = Deck.new
+  end
+
+  def reset
+    human.reset
+    dealer.reset
+    @deck = Deck.new
+  end
+
+  def introductions
+    display_greeting
+    human.set_name
+    dealer.set_name
+    introduce_players
+  end
+
   def deal_initial_hands
     2.times do |_|
       human.hit(deck.deal)
@@ -199,7 +223,7 @@ class TwentyOneGame
       puts '(H)it or (S)tay?'
       choice = gets.chr.downcase
       break if %w[h s].include? choice
-      puts 'Invalid choice, please try again.'
+      invalid_choice
     end
 
     choice
@@ -215,9 +239,7 @@ class TwentyOneGame
   end
 
   def dealer_turn
-    while dealer.points < DEALER_STAYS
-      dealer.hit(deck.deal)
-    end
+    dealer.hit(deck.deal) while dealer.points < DEALER_STAYS
   end
 
   def display_round_results
@@ -231,10 +253,10 @@ class TwentyOneGame
   def display_busted
     if human.busted?
       dealer.increment_score
-      puts 'Human busted, Dealer wins!'
+      puts "#{human} busted, #{dealer} wins!"
     elsif dealer.busted?
       human.increment_score
-      puts 'Dealer busted, Human wins!'
+      puts "#{dealer} busted, #{human} wins!"
     end
     puts
   end
@@ -249,7 +271,6 @@ class TwentyOneGame
     else
       puts 'Push! Human and Dealer tie!'
     end
-    puts
   end
 
   def play_again?
@@ -258,22 +279,9 @@ class TwentyOneGame
     loop do
       entry = gets.chr.downcase
       break if %w[y n].include? entry
-      puts "Sorry, I didn't recognize your decision. Please enter 'y' (for yes) or 'n' (for no)."
+      invalid_choice
     end
     entry == 'y'
-  end
-
-  def display_game_results
-    puts
-    puts 'Games won:'
-    puts "#{human}: #{human.score}"
-    puts "#{dealer}: #{dealer.score}"
-    puts
-  end
-
-  def display_goodbye
-    puts
-    puts 'Thanks for playing Twenty One. Goodbye!'
   end
 
   def play
@@ -282,8 +290,7 @@ class TwentyOneGame
       play_round
       display_game_results
       break unless play_again?
-      human.reset
-      dealer.reset
+      reset
     end
     display_goodbye
   end
