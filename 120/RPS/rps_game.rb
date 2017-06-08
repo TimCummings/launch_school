@@ -70,7 +70,7 @@ end
 
 class Computer < Player
   def set_name
-    self.name = %w[R2D2 Hal Chappie Sonny Number 5].sample
+    self.name = %w[R2D2 Hal Chappie Sonny Number\ 5].sample
   end
 
   def choose
