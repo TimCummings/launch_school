@@ -62,7 +62,7 @@ class Player
 
   def set_name
     puts 'Please enter your name.'
-    puts 'Otherwise, I\'ll have to come up with something to call you - '
+    puts "Otherwise, I'll have to come up with something to call you - "
     entry = gets.chomp
     @name = if entry.empty?
               DEFAULT_NAMES.sample
@@ -82,7 +82,7 @@ class Player
   end
 
   def check_aces
-    hand.count(Card.new('Ace')).times do |_|
+    hand.count(Card.new('Ace')).times do
       @points -= 10
       break unless busted?
     end
@@ -130,7 +130,7 @@ end
 
 module Printable
   def clear
-    system 'clear'
+    system('clear') || system('cls')
   end
 
   def invalid_choice
@@ -209,7 +209,7 @@ class TwentyOneGame
   end
 
   def deal_initial_hands
-    2.times do |_|
+    2.times do
       human.hit(deck.deal)
       dealer.hit(deck.deal)
     end
