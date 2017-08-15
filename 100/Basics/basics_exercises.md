@@ -9,7 +9,7 @@ puts "Exercise 1: "
 puts "Tim " + "Cummings"
 ```
 
-
+---
 ### Exercise 2
 Use the modulo operator, division, or a combination of both to take a 4 digit number and find the digit in the:
   1. thousands place
@@ -29,7 +29,7 @@ puts (number % 100) / 10
 puts (number % 10)
 ```
 
-
+---
 ### Exercise 3
 Write a program that uses a hash to store a list of movie titles with the year they came out. Then use the `puts` command to make your program print out the year of each movie to the screen. The output for your program should look something like this:
 ```
@@ -59,7 +59,7 @@ puts movies[:Zombieland]
 puts movies[:Equilibrium]
 ```
 
-
+---
 ### Exercise 4
 Use the dates from the previous example and store them in an array. Then make your program output the same thing as exercise 3.
 
@@ -77,7 +77,7 @@ puts movies[4]
 puts movies[3]
 ```
 
-
+---
 ### Exercise 5
 Write a program that outputs the factorial of the numbers 5, 6, 7, and 8.
 
@@ -93,7 +93,7 @@ puts fact * 6 * 7
 puts fact * 6 * 7 * 8
 ```
 
-
+---
 ### Exercise 6
 Write a program that calculates the squares of 3 float numbers of your choosing and outputs the result to the screen.
 
@@ -105,7 +105,7 @@ puts 89.71 ** 2
 puts 2349.87 ** 2
 ```
 
-
+---
 ### Exercise 7
 What does the following error message tell you?
 
