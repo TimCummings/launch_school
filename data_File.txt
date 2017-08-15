@@ -1,0 +1,21 @@
+##################################
+Location: DEU
+##################################
+Ammonia: 023 particles
+Nitrogen Oxide: 019 particles
+Carbon Monoxide: 127 particles
+##################################
+##################################
+Location: USA
+##################################
+Ammonia: 200 particles
+Nitrogen Oxide: 120 particles
+Carbon Monoxide: 120 particles
+##################################
+##################################
+Location: AUS
+##################################
+Ammonia: 122 particles
+Nitrogen Oxide: 132 particles
+Carbon Monoxide: 099 particles
+##################################
