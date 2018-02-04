@@ -29,6 +29,8 @@ If all available spots on the grid are selected, but no player has a full line, 
   - get a full line
   - win/lose/tie
 
+
 * grid
+
 
 * result
