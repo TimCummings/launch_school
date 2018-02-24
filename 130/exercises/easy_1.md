@@ -101,7 +101,7 @@ divisors(99400891) == [1, 9967, 9973, 99400891] # may take a minute
 ``` ruby
 def divisors(int)
   result = [1]
-  2.upto(int) {|x| result << x if int % x == 0 }
+  2.upto(int) { |x| result << x if int % x == 0 }
   result
 end
 ```

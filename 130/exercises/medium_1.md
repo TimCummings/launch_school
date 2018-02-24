@@ -522,7 +522,7 @@ facts = Enumerator.new do |fact|
   loop do
     fact << accumulator
     num += 1
-    accumulator *= (num)
+    accumulator *= num
   end
 end
 
