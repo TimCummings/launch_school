@@ -30,7 +30,7 @@
 
 
 
-# refactor: no need to explicit iterate by index, modifying in place while iterating works as expected in this case
+# refactor: no need to explicitly iterate by index, modifying in place while iterating works as expected in this case
 class Sieve
   def initialize(ceiling)
     raise ArgumentError, "Input must be a number." unless ceiling.is_a? Numeric
@@ -39,7 +39,7 @@ class Sieve
 
   def primes
     @primes.each do |factor|
-      @primes.delete_if { |number| number != factor && number % factor == 0 }
+      @primes.delete_if { |num| (num != factor) && (num % factor == 0) }
     end
 
     @primes
