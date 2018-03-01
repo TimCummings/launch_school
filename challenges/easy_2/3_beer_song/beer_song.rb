@@ -59,12 +59,10 @@ class BeerSong
   end
 
   def verses(initial, final)
-      initial.downto(final).each_with_object([]) do |bottle, song|
-        song << verse(bottle)
-      end.join("\n")
-    end
+      initial.downto(final).map { |bottle| verse(bottle) }.join("\n")
+  end
 
-    def lyrics
-      verses(99, 0)
-    end
+  def lyrics
+    verses(99, 0)
+  end
 end
