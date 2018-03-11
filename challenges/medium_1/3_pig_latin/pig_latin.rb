@@ -7,17 +7,17 @@ class PigLatin
 
     phrase.downcase.split(' ').map do |word|
       case word
-      when /\A([xy][^aeiou]|[aeiou])/ then translate_vowel(word)
-      when /\A([xy][aeiou]|[^aeiou])/ then translate_consonant(word)
+      when /\A([xy][^aeiou]|[aeiou])/ then translate_vowel_sound(word)
+      when /\A([xy][aeiou]|[^aeiou])/ then translate_consonant_sound(word)
       end
     end.join(' ')
   end
 
-  def self.translate_vowel(word)
+  def self.translate_vowel_sound(word)
     word << 'ay'
   end
 
-  def self.translate_consonant(word)
+  def self.translate_consonant_sound(word)
     first_sound = slice_first_sound(word)
     word + first_sound + 'ay'
   end
