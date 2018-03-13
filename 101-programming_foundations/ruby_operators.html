@@ -5,7 +5,10 @@
     <style>
       body { font-family: tahoma; }
 
-      h1 { text-align: center; }
+      h1 {
+        text-align: center;
+        font-weight: normal;
+      }
 
       table {
         border-collapse: collapse;
@@ -14,6 +17,7 @@
       }
 
       table, tr, td { border: 1px solid #17526b; }
+      tr, th, td { padding: 5px; }
 
       th {
         color: white;
@@ -21,13 +25,20 @@
         border-left: 1px solid white;
         border-right: 1px solid white;
         font-size: 1.3em;
-        font-weight: lighter;
+        font-weight: normal;
       }
 
       table th:first-child { border-left: none }
       table th:last-child { border-right: none }
 
       tr:nth-child(even) { background-color: lightgray; }
+      tr:hover {
+        color: white;
+        background-color: #376e85;
+       }
+
+      td:first-child { text-align: center; }
+      td:nth-child(even) { text-align: center; }
     </style>
   </head>
 
@@ -79,9 +90,9 @@
           <td>bitwise and</td>
         </tr>
         <tr>
-          <td>^, |</td>
+          <td>|, ^</td>
           <td>yes</td>
-          <td>bitwise inclusive or, bitwise or</td>
+          <td>bitwise or, bitwise xor</td>
         </tr>
         <tr>
           <td><=, <, >, >=</td>
