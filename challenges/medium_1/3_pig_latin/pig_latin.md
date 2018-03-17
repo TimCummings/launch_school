@@ -14,6 +14,8 @@ Test suite provided: [pig_latin_test.rb](pig_latin_test.rb)
 
 ---
 ### Solution
+[pig_latin.rb](pig_latin.rb)
+
 * Input: string representing word or series of words to be translated to pig latin
 * Output: string representing input translated to pig latin
 * Rules/Implicit Knowledge

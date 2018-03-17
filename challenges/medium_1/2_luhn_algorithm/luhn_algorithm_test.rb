@@ -1,4 +1,4 @@
-# luhn_algorithm_test.md
+# luhn_algorithm_test.rb
 
 require 'minitest/autorun'
 require 'minitest/reporters'
