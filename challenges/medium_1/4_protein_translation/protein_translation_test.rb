@@ -85,6 +85,6 @@ class ProteinTranslationTest < Minitest::Test
   end
 
   def test_empty_strand
-    assert_raises(InvalidCodonError) { Translation.of_rna('') }
+    assert_equal [], Translation.of_rna('')
   end
 end
