@@ -51,7 +51,7 @@ end
 #                'STOP'          => ['UAA', 'UAG', 'UGA'] }
 #
 #   def self.of_codon(codon)
-#     PROTEINS.find lambda { raise InvalidCodonError } do |_, values|
+#     PROTEINS.find(lambda { raise InvalidCodonError }) do |_, values|
 #       values.include? codon
 #     end.first
 #   end
@@ -85,7 +85,7 @@ end
 #                'STOP'          => ['UAA', 'UAG', 'UGA'] }
 #
 #   def self.of_codon(codon)
-#     PROTEINS.find lambda { raise InvalidCodonError } do |_, values|
+#     PROTEINS.find(lambda { raise InvalidCodonError }) do |_, values|
 #       values.include? codon
 #     end.first
 #   end
