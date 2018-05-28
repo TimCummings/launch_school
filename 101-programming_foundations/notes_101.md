@@ -5,7 +5,7 @@
 
 ### Variables
 There are five types of variables:
-1. contant variables - indicated by all caps e.g. `VOWELS`
+1. constant variables - indicated by all caps e.g. `VOWELS`
 2. global variables - start with `$` e.g. `$foo`
 3. class variables - start with `@@` e.g. `@@vowels`
 4. instance variables - start with `@` e.g. `@cost`
