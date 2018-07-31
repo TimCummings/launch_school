@@ -134,7 +134,7 @@ A protocol is said to be *stateless* when it's designed so that each request/res
 
 ### GUI Tools
 
-* [Paw 3](Paw 3)
+* [Paw 3](https://paw.cloud)
 * [Insomnia](https://insomnia.rest/)
 * [Postman](https://www.getpostman.com/)
 
@@ -483,3 +483,119 @@ Redirecting users to other pages is a common practice, e.g. redirecting to an or
 
 Sinatra provides a `redirect` method for easy redirection.
 
+---
+
+### Deploying to Heroku
+
+* Prerequisites:
+  - Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) (make sure you can `heroku login`)
+  - your project must be in a Git repository
+  - **NB:** `pry` doesn't work with Heroku out of the box; remove any `binding.pry` calls in your code before deploying to Heroku.
+
+#### Configuring an App for Deployment
+1. Sinatra provides `development?` and `production?` methods whose return values are determined by the current value of the `RACK_ENV` environment variable. Heroku automatically sets this to `"production"`. Use this feature to enable/disable appropriate tasks, e.g. you don't want your production application's files reloading every page refresh, so disable `sinatra/reloader` in production with: `require 'sinatra/reloader' if development?`
+2. Specify a Ruby version in your `Gemfile` so Heroku knows exactly which version to use, otherwise Heroku will throw an error.
+3. Use a production web server (i.e. _not_ WEBrick). WEBrick is fine for local development but [it's not suitable as a production web server](https://devcenter.heroku.com/articles/ruby-default-web-server). Add a gem for a production web server to your `Gemfile` in a production group:
+```ruby
+group :production do
+  gem 'puma'
+end
+```
+4. Create a rackup file (usually `config.ru`) in your project's root directory; this will tell the web server how to start your application:
+```ruby
+require './book_viewer'
+run Sinatra::Application
+```
+5. Create a `Procfile` in your project's root directory; this determines which processes to start when your application boots up. [More info here](https://devcenter.heroku.com/articles/procfile). For large applications, it's recommended to use a separate config file, but for small apps, this inline approach is ok: `web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}`
+6. Test your project (and Procfile) locally with: `heroku local`; you should see something like:
+```
+$ heroku local
+forego | starting web.1 on port 5000
+web.1  | Puma starting in single mode...
+web.1  | * Listening on tcp://0.0.0.0:5000
+web.1  | Use Ctrl-C to stop
+```
+
+#### Creating a Heroku Application
+1. Create a Heroku application with `heroku apps:create $NAME`, where `$NAME` is the application name you wish to use. If you don't provide a value, Heroku will randomly generate one. (You will sometimes see the alias `heroku create $NAME`.)
+2. Push your project to the new Heroku application with `git push heroku master`. **NB:** Heroku only looks at the `master` branch of a repository when processing a `git push`. Accordingly, you _must_ the code you want to run on Heroku to the remote `master` branch, regardless of which branch it is in locally. You can either specify the name of a local branch with `git push heroku local-branch-name:master`, or merge your changes into your local `master` branch and then `git push heroku master`.
+3. Visit your application and make sure it's working.
+4. After deploying, you can see certain details (like the `RACK_ENV` environment variable) with `heroku config` in your project's directory. (**NB:** Environment variables are often used to provide API keys and other secret values to applications without including them in source code and version control, so this can be a useful troubleshooting step.)
+
+---
+
+### Flashing Messages
+
+1. save message to session in generating route
+2. check for message in terminating view, deleting message from session to display it
+
+### Validation
+
+Notice that we follow a certain pattern when organizing our routes. When a valid action takes place we redirect and when there is some sort of error we will render a page.
+```ruby
+post "/lists" do
+  list_name = params[:list_name].strip
+  if list_name.size >= 1 && list_name.size <= 100
+    session[:lists] << {name: list_name, todos: []}
+    session[:success] = "The list has been created."
+    redirect "/lists"
+  else
+    session[:error] = "List name must be between 1 and 100 characters."
+    erb :new_list, layout: :layout
+  end
+end
+```
+The reason for this pattern is due to HTTP's stateless nature. If there is an error, we want to be able to go back and fix it. It may be useful to have access to our parameters and any instance variables set in the current route in that case. If we redirect to the new list page, then we'll lose access to data related to the current request.
+
+### Capturing Template Content for Display Elsewhere
+
+With [`Sinatra::ContentFor`](http://sinatrarb.com/contrib/content_for), an extension that is part of `Sinatra::Contrib`, it is possible to define additional content in a view and display it in your layout in a specific location, separate from the layout's `<%= yield %>`. To use `Sinatra::ContentFor`...
+1. `require 'sinatra/content_for'` in your main Sinatra app file
+2. In a view, define additional content in a `content_for` block and provide a symbol name, e.g.
+```ruby
+<% content_for :header_links do %>
+  <a href="/link/1">Link 1</a>
+  <a href="/link/2">Link 2</a>
+<% end %>
+```
+3. In the appropriate layout, `yield_content` to the symbol name, e.g.
+```ruby
+  <%= yield_content :header_links %>
+```
+4. Note the use of `<% %>` in the view and of `<%= %>` in the layout!
+
+---
+
+### Securing Applications
+
+One of Sinatra's main benefits is how lightweight it is: there is less to learn than e.g. Rails and you can get a simple project running quickly. A downside to this is that developers have to sometimes manually handle features that larger frameworks take care of automatically. One such security feature is *escaping* HTML: replacing certain characters in the text with HTML entities that the browser won't interpret as code.
+
+As useful as it is to generate HTML dynamically, doing so provides lots of opportunities to influence the code that is written into a page. Nefarious parties can use such opportunities to modify your page and ultimately steal data or credentials.
+
+As an example in the Sinatra Todos application, add the following todo (exactly): `<script>alert("This code was injected!");</script>Pizza`. Note that:
+1. The JavaScript code in the script tag [is being evaluated](images/during_injection.png).
+2. [After clicking OK, the page appears normally](../images/after_injection.png): if the code hadn't announced itself, we'd have no idea it was injected.
+
+Rack provides a method for escaping HTML with `Rack::Utils.escape_html`:
+```ruby
+Rack::Utils.escape_html "test"
+# => "test"
+Rack::Utils.escape_html "<p>This won't be evaluted.</p>"
+# => "&lt;p&gt;This won&#x27;t be evaluated&lt;&#x2F;p&gt;"
+```
+
+Sinatra provides another, more thorough approach which escapes *all* output:
+```ruby
+configure do
+  set :erb, :escape_html => true
+end
+```
+**NB**: this may escape code that you want to be evaluated. In that case, make sure to use `<%== ... %>` to disable auto-escaping. E.g. in `layout.erb`, `<%= yield %>` will probably not work as intended; instead, use `<%== yield %>`.
+
+#### HTTP Methods and Security
+
+Form submissions via `GET` uses query parameters in the URL, e.g. `localhost:4567/submit?email=my.email%40something.com`. As a result, `GET` is (correctly) regarded as in-secure over HTTP.
+
+Form submissions via `POST` use the request body instead of query parameters, leading some to assume `POST` is more secure. However, the request body is still plainly visible over HTTP (unencrypted) to anyone with even a vague understanding of HTTP. Consequently, `POST` is no more or less secure than `GET`.
+
+If your form modifies data on the server, use `POST`; if it doesn't, use `GET`. **For security, make sure you're using HTTPS (encrypted)!!**
