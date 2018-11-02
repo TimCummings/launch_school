@@ -599,3 +599,133 @@ Form submissions via `GET` uses query parameters in the URL, e.g. `localhost:456
 Form submissions via `POST` use the request body instead of query parameters, leading some to assume `POST` is more secure. However, the request body is still plainly visible over HTTP (unencrypted) to anyone with even a vague understanding of HTTP. Consequently, `POST` is no more or less secure than `GET`.
 
 If your form modifies data on the server, use `POST`; if it doesn't, use `GET`. **For security, make sure you're using HTTPS (encrypted)!!**
+
+---
+
+## Testing Rack-based Web Applications
+
+So far we haven't done any testing of our Sinatra applications. Web applications, like any other software project, often benefit from a test suite that ensures the software's behavior is correct.
+
+Since Sinatra builds on top of the [Rack](http://chneukirchen.org/blog/archive/2007/02/introducing-rack.html) library, testing Sinatra applications can take advantage of the [Rack::Test](https://github.com/brynary/rack-test) library for testing Rack applications.
+
+> For a deeper explanation of Rack, read [What is ‘Rack’ in Ruby/Rails?](http://blog.gauravchande.com/what-is-rack-in-ruby-rails). Wherever the article mentions Rails, it is also talking about Sinatra.
+
+### Using Rack::Test and Sinatra
+
+Now we'll walk through using `Rack::Test` with Sinatra. Let's start with a really simple Sinatra application, like this one:
+
+```ruby
+# app.rb
+require "sinatra"
+
+get "/" do
+  "Hello, world!"
+end
+```
+
+Testing this application takes a little bit of setup, but the test itself is pretty simple:
+
+```ruby
+# test/app_test.rb
+ENV["RACK_ENV"] = "test"
+
+require "minitest/autorun"
+require "rack/test"
+
+require_relative "../app"
+
+class AppTest < Minitest::Test
+  include Rack::Test::Methods
+
+  def app
+    Sinatra::Application
+  end
+
+  def test_index
+    get "/"
+    assert_equal 200, last_response.status
+    assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
+    assert_equal "Hello, world!", last_response.body
+  end
+end
+```
+
+Let's go through this one section at a time. First, we set the `RACK_ENV` environment variable to "test". This value is used by various parts of Sinatra and Rack to know if the code is being tested, and in the case of Sinatra, to determine whether it will start a web server or not (we don't want it to if we're running tests):
+
+```
+ENV["RACK_ENV"] = "test"
+```
+
+Next up, we `require` the libraries that we'll be using for testing:
+
+```
+require "minitest/autorun"
+require "rack/test"
+```
+
+By requiring `minitest/autorun`, we load Minitest and also configure it to automatically run any tests that will be defined. We also need to require `rack/test` which gives us access to `Rack::Test` helper methods, which we'll talk more about in a bit. Keep in mind that `rack/test` does not come built in with Sinatra. We're able to access the `rack/test` library and `Rack::Test` module from a gem called `rack-test`, which we get access to when we have `sinatra-contrib` in our Gemfile.
+
+Then we need to require our Sinatra application:
+
+```
+require_relative "../app"
+```
+
+With that setup out of the way, we can get down to writing tests. Minitest uses methods whose names start with `test_` to define test cases, and these need to be defined in a class that subclasses `Minitest::Test`. So that's what we do:
+
+```
+class AppTest < Minitest::Test
+```
+
+By mixing `Rack::Test::Methods` into our class, we gain access to a bunch of useful testing helper methods. These methods expect a method called `app` to exist and return an instance of a Rack application when called. So we'll define an `app` method that does just that:
+
+```
+include Rack::Test::Methods
+
+def app
+  Sinatra::Application
+end
+```
+
+And now we can write a test. The following test makes a GET request to our application using the path `/` and verifies the status code, content type header, and body of the response:
+
+```
+def test_index
+  get "/"
+  assert_equal 200, last_response.status
+  assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
+  assert_equal "Hello, world!", last_response.body
+end
+```
+
+Running the test just requires providing the path to it to the `ruby` command:
+
+```
+$ bundle exec ruby test/app_test.rb
+Run options: --seed 58361
+
+
+# Running:
+
+AppTest .
+
+Finished in 0.017774s, 56.2624 runs/s, 168.7873 assertions/s.
+
+1 runs, 3 assertions, 0 failures, 0 errors, 0 skips
+```
+
+### A General Approach to Testing Sinatra Applications
+
+Here is a summary of what you need to be able to do to get started testing a Sinatra application:
+
+1. Make a request to your application.
+
+Use `get`, `post`, or other HTTP-method named methods.
+
+2. Access the response.
+
+The response to your request will be accessible using `last_response`. This method will return an instance of `Rack::MockResponse`. Instances of this class provide `status`, `body`, and `[]` methods for accessing their status code, body, and headers, respectively.
+
+3. Make assertions against values in the response.
+
+Use the standard assertions supplied by `Minitest`.
