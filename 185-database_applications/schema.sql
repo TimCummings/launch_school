@@ -2,7 +2,7 @@ CREATE TABLE expenses (
   id serial PRIMARY KEY,
   amount decimal(8, 2),
   memo text,
-  created_on timestamp
+  created_on date
 );
 
 ALTER TABLE expenses
