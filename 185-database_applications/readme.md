@@ -8,3 +8,5 @@
 5. [Displaying Help](displaying_help.md)
 6. [Adding Expenses](adding_expenses.md)
 7. [Handling Parameters Safely](handling_parameters_safely.md)
+8. [Code Structure](code_structure.md)
+9. [Searching Expenses](searching_expenses.md)
