@@ -7,3 +7,4 @@
 4. [Listing Expenses](listing_expenses.md)
 5. [Displaying Help](displaying_help.md)
 6. [Adding Expenses](adding_expenses.md)
+7. [Handling Parameters Safely](handling_parameters_safely.md)
