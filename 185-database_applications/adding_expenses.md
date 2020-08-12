@@ -38,7 +38,7 @@ require 'dotenv/load'
 
 def add_expense(amount, memo)
   db = PG.connect(dbname: 'expenses', password: ENV['DB_PASSWORD'])
-  db.exec "INSERT INTO EXPENSES (amount, memo, created_on) VALUES (#{amount}, '#{memo}', NOW());"
+  db.exec "INSERT INTO expenses (amount, memo, created_on) VALUES (#{amount}, '#{memo}', NOW());"
 end
 
 def display_help

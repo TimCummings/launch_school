@@ -83,7 +83,7 @@ connection.exec_params("SELECT 1 + $1 + $2;", [2]).values
 ```ruby
 def add_expense(amount, memo)
   db = PG.connect(dbname: 'expenses', password: ENV['DB_PASSWORD'])
-  sql = 'INSERT INTO EXPENSES (amount, memo, created_on) VALUES ($1, $2, $3);'
+  sql = 'INSERT INTO expenses (amount, memo, created_on) VALUES ($1, $2, $3);'
   db.exec_params sql, [amount, memo, Date.today]
 end
 ```
