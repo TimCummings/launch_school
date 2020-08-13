@@ -45,7 +45,6 @@ There is no expense with the id '5'.
 
 require 'pg'
 require 'dotenv/load'
-require 'pry'
 
 class ExpenseData
   def initialize
