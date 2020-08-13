@@ -10,3 +10,6 @@
 7. [Handling Parameters Safely](handling_parameters_safely.md)
 8. [Code Structure](code_structure.md)
 9. [Searching Expenses](searching_expenses.md)
+10. [Deleting Expenses](deleting_expenses.md)
+
+expenses project located here: https://github.com/TimCummings/185-expenses
