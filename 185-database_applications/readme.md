@@ -13,5 +13,6 @@
 10. [Deleting Expenses](deleting_expenses.md)
 11. [Clearing Expenses](clearing_expenses.md)
 12. [Counting and Totaling Expenses](counting_and_totaling_expenses.md)
+13. [Creating Schema Automatically](creating_schema_automatically.md)
 
 expenses project located here: https://github.com/TimCummings/185-expenses
