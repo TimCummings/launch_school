@@ -75,7 +75,7 @@ class ExpenseData
   def search_expenses(query)
     sql = 'SELECT * FROM expenses WHERE memo ILIKE $1;'
     result = @connection.exec_params sql, ["%#{query}%"]
-    format_and_print(result)
+    display_expenses(result)
   end
 
   private
