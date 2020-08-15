@@ -1,5 +1,5 @@
 
-### Lesson Order
+# Lesson Order
 
 1. [Executing SQL Statements from Ruby](executing_sql_from_ruby.md)
 2. [Project Setup](project_setup.md)
