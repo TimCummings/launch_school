@@ -1,0 +1,11 @@
+
+1. [Introduction](introduction.md)
+2. [Getting Started](getting_started.md)
+3. [Creating an HTML Skeleton](creating_html_skeleton.md)
+4. [Classes, IDs, and Names](classes_ids_names.md)
+5. [Practice Problems: Semantics](semantics_practice_problems.md)
+6. [Walkthrough Project: A Simple Web Page](simple_web_page.md)
+7. [Guided Project: A Personal Profile](personal_profile.md)
+8. [Practice Problems: Text Formatting](text_formatting_practice_problems.md)
+9. [On Your Own: Creating a Simple Page](creating_a_simple_page.md)
+10. [Practice Problems: CSS Selectors](css_selectors_practice_problems.md)
