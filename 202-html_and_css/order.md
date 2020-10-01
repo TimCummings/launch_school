@@ -4,3 +4,4 @@
 3. [Images](images)
 4. [Lists and Tables](lists_and_tables)
 5. [Forms](forms)
+6. [Advanced Layout](advanced_layout)

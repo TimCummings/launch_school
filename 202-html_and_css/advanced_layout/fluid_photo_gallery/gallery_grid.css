@@ -1,0 +1,96 @@
+html, body {
+  background-color: #151515;
+  box-sizing: border-box;
+  color: #f0f0f0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #333;
+  display: grid;
+  grid-template-areas:
+    "header     header     header     header"
+    "feature    feature    feature    feature"
+    "thumbnails thumbnails thumbnails thumbnails";
+  margin: 0 auto;
+  max-width: 1000px;
+  min-width: 500px;
+  padding: 1rem 0;
+  place-items: center;
+}
+
+h1 {
+  grid-area: header;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+figure {
+  grid-area: feature;
+  padding: 1rem;
+}
+
+figcaption {
+  padding: 1rem 0;
+}
+
+img:first-of-type {
+  grid-area: thumbnail1;
+}
+
+img:nth-of-type(2) {
+  grid-area: thumbnail2;
+}
+
+img:nth-of-type(3) {
+  grid-area: thumbnail3;
+}
+
+img:nth-of-type(4) {
+  grid-area: thumbnail4;
+}
+
+img {
+  border: 15px solid white;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+ul.thumbnails {
+  column-gap: 2rem;
+  display: grid;
+  grid-area: thumbnails;
+  grid-template-areas:
+    "thumbnail1 thumbnail2 thumbnail3 thumbnail4";
+  list-style: none;
+  padding: 1rem;
+}
+
+ul.thumbnails img {
+  border: 3px solid white;
+}
+
+ul.thumbnails img:first-of-type {
+  grid-area: thumbnail1;
+}
+
+ul.thumbnails img:nth-of-type(2) {
+  grid-area: thumbnail2;
+}
+
+ul.thumbnails img:nth-of-type(3) {
+  grid-area: thumbnail3;
+}
+
+ul.thumbnails img:nth-of-type(4) {
+  grid-area: thumbnail4;
+}

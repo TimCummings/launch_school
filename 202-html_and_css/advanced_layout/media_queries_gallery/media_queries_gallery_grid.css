@@ -1,0 +1,101 @@
+/* <body> must NOT contain a <main> that wraps everything else! */
+
+html, body {
+  background-color: #151515;
+  box-sizing: border-box;
+  color: #f0f0f0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #333;
+  display: grid;
+  grid-template-areas:
+    "header     header     header     header"
+    "feature    feature    feature    feature"
+    "thumbnails thumbnails thumbnails thumbnails";
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 1rem 0;
+  place-items: center;
+}
+
+h1 {
+  grid-area: header;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+figure {
+  grid-area: feature;
+  padding: 1rem;
+}
+
+figcaption {
+  padding: 1rem 0;
+}
+
+img {
+  border: 15px solid white;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+ul.thumbnails {
+  column-gap: 1.5rem;
+  display: grid;
+  grid-area: thumbnails;
+  grid-template-columns: repeat(4, 1fr);
+  list-style: none;
+  padding: 1rem;
+}
+
+ul.thumbnails img {
+  border: 3px solid white;
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 899px) {
+  ul.thumbnails {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 599px) {
+  ul.thumbnails {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  body {
+    grid-template-areas:
+      "header     header"
+      "feature    thumbnails";
+    max-width: none;
+  }
+
+  figure {
+    align-self: start;
+  }
+
+  figure img {
+    width: 950px;
+  }
+
+  ul.thumbnails {
+    grid-template-columns: 1fr;
+  }
+}
