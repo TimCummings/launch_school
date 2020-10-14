@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Todo List</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+  <header>
+    <input type="checkbox" id="nav-toggle" />
+    <nav>
+      <section>
+        <h1>
+          <img src="files/all-todos.png" alt="all todos" />
+          All Todos <mark class="counter">18</mark>
+        </h1>
+
+        <ol>
+          <li class="selected"><a href="#">02/16</a><p class="counter">8</p></li>
+          <li><a href="#">03/16</a><p class="counter">2</p></li>
+          <li><a href="#">04/16</a><p class="counter">1</p></li>
+          <li><a href="#">05/16</a><p class="counter">1</p></li>
+          <li><a href="#">06/16</a><p class="counter">6</p></li>
+        </ol>
+      </section>
+
+      <section>
+        <h1>
+          <img src="files/done.png" alt="check mark - completed todos" />
+          Completed
+        </h1>
+        <ol>
+          <li class="completed"><a href="#">02/15</a></li>
+          <li class="completed"><a href="#">03/15</a></li>
+          <li class="completed"><a href="#">04/15</a></li>
+          <li class="completed"><a href="#">05/15</a></li>
+          <li class="completed"><a href="#">06/14</a></li>
+        </ol>
+      </section>
+    </nav>
+  </header>
+
+  <main>
+    <label for="nav-toggle" class="nav-hamburger">
+      <img src="files/hamburger.png" alt="nav toggle hamburger menu icon" />
+    </label>
+
+    <h1>02/16 <mark class="counter">8</mark></h1>
+
+    <button type="button">
+      <img src="files/plus.png" alt="plus sign: add new todo" />
+      Add new to do
+    </button>
+
+    <ul>
+      <li>
+        <label for="todo-toggle">
+          <img src="files/unticked-box.png" alt="incomplete todo" />
+          Item 1
+        </label>
+        <a href="#" class="right-justify">
+          <img src="files/trash.png" alt="delete todo" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="files/unticked-box.png" alt="incomplete todo" />
+          Item 2
+        </a>
+        <a href="#" class="right-justify">
+          <img src="files/trash.png" alt="delete todo" />
+        </a>
+      </li>
+      <li class="completed">
+        <a href="#">
+          <img src="files/ticked-box.png" alt="complete todo" />
+          Item 3
+        </a>
+        <a href="#" class="right-justify">
+          <img src="files/trash.png" alt="delete todo" />
+        </a>
+      </li>
+      <li class="completed">
+        <a href="#">
+          <img src="files/ticked-box.png" alt="complete todo" />
+          Item 4
+        </a>
+        <a href="#" class="right-justify">
+          <img src="files/trash.png" alt="delete todo" />
+        </a>
+      </li>
+      <li class="completed">
+        <a href="#">
+          <img src="files/ticked-box.png" alt="complete todo" />
+          Item 5
+        </a>
+        <a href="#" class="right-justify">
+          <img src="files/trash.png" alt="delete todo" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="files/unticked-box.png" alt="incomplete todo" />
+          Item 6
+        </a>
+        <a href="#" class="right-justify">
+          <img src="files/trash.png" alt="delete todo" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="files/unticked-box.png" alt="incomplete todo" />
+          Item 7
+        </a>
+        <a href="#" class="right-justify">
+          <img src="files/trash.png" alt="delete todo" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="files/unticked-box.png" alt="incomplete todo" />
+          Item 8
+        </a>
+        <a href="#" class="right-justify">
+          <img src="files/trash.png" alt="delete todo" />
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="files/unticked-box.png" alt="incomplete todo" />
+          Item 9
+        </a>
+        <a href="#" class="right-justify">
+          <img src="files/trash.png" alt="delete todo" />
+        </a>
+      </li>
+    </ul>
+
+    <input type="checkbox" id="todo-toggle" />
+    <section class="todo-menu">
+      <form action="#">
+        <fieldset>
+          <dl>
+            <dt><label for="todo-title">Title</label></dt>
+            <dd><input type="text" id="todo-title" value="Item 1" /></dd>
+          </dl>
+
+          <dl id="todo-date">
+            <dt><label>Due Date</label></dt>
+            <dd>
+              <select name="todo-day" id="todo-day">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+                <option>31</option>
+              </select>
+            </dd>
+            <dd>
+              <p>/</p>
+              <select name="todo-day" id="todo-month">
+                <option>January</option>
+                <option>February</option>
+                <option>March</option>
+                <option>April</option>
+                <option>May</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+              </select>
+            </dd>
+            <dd>
+              <p>/</p>
+              <select id="todo-year">
+                <option>2014</option>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
+              </select>
+            </dd>
+          </dl>
+
+          <dl>
+            <dt><label for="todo-description">Description</label></dt>
+            <dd>
+              <textarea id="todo-description" placeholder="Description"></textarea>
+            </dd>
+          </dl>
+
+          <input type="submit" value="Save" />
+          <input type="submit" value="Mark As Complete" formaction="#" />
+        </fieldset>
+      </form>
+    </section>
+
+  </main>
+</body>
+</html>

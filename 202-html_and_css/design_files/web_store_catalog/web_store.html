@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Web Store</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="whitespace-reset.css">
+
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    html, body {
+      font: normal 16px Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffd505;
+      color: black;
+      margin: 0 auto;
+      width: 900px;
+    }
+
+    header {
+      background-color: #047ec1;
+      border-bottom-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+      color: white;
+      margin-bottom: 30px;
+      padding: 30px 25px;
+    }
+
+    main {
+      background-color: #ececec;
+      padding: 25px;
+    }
+
+    h1 {
+      font-size: 38px;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    ul.products::after {
+      clear: both;
+      content: "";
+      display: block;
+    }
+
+    ul.products li {
+      background-color: white;
+      float: left;
+      height: 235px;
+      margin: 0 15px 15px 0;
+      padding: 15px;
+      width: 200px;
+    }
+
+    ul.products li:nth-of-type(4n) {
+      margin-right: 0;
+    }
+
+    ul.products figure {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    ul.products img {
+      display: inline-block;
+      height: 140px;
+      width: auto;
+    }
+
+    ul.products h3 {
+      font-size: 20px;
+      margin: 5px 0;
+    }
+
+    ul.products input[type="checkbox"]:checked + figure img {
+      height: auto;
+      left: 50%;
+      margin-left: -200px;
+      position:absolute;
+      top: 100px;
+      width: 400px;
+    }
+
+    ul.products input[type="checkbox"]:checked + figure::before {
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      content: "";
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Paramiicio</h1>
+  </header>
+
+  <main>
+    <h2>All Products</h2>
+
+    <ul class="products">
+      <li>
+        <label>
+          <input type="checkbox" hidden name="products" value="Aurelia" />
+          <figure>
+            <img src="images/aurelia.jpg" alt="Aurelia" />
+          </figure>
+          <h3>Aurelia</h3>
+          <p>$12.99</p>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="checkbox" hidden name="products" value="Polycaryum" />
+          <figure>
+            <img src="images/polycaryum.jpg" alt="Polycaryum" />
+          </figure>
+          <h3>Polycaryum</h3>
+          <p>$12.99</p>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="checkbox" hidden name="products" value="Chlorelligerum" />
+          <figure>
+            <img src="images/chlorelligerum.jpg" alt="Chlorelligerum" />
+          </figure>
+          <h3>Chlorelligerum</h3>
+          <p>$12.99</p>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="checkbox" hidden name="products" value="Sonneborni" />
+          <figure>
+            <img src="images/sonneborni.jpg" alt="Sonneborni" />
+          </figure>
+          <h3>Sonneborni</h3>
+          <p>$12.99</p>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="checkbox" hidden name="products" value="Ugandae" />
+          <figure>
+            <img src="images/ugandae.jpg" alt="Ugandae" />
+          </figure>
+          <h3>Ugandae</h3>
+          <p>$12.99</p>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="checkbox" hidden name="products" value="Woodruffi" />
+          <figure>
+            <img src="images/woodruffi.jpg" alt="Woodruffi" />
+          </figure>
+          <h3>Woodruffi</h3>
+          <p>$12.99</p>
+        </label>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>

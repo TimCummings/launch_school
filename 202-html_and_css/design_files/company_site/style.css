@@ -1,0 +1,145 @@
+@import url("whitespace-reset.css");
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  font: normal 20px "Avenir", "Nunito", Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  align-items: center;
+  background: url("images/bg_body.gif") repeat;
+  background-color: #2f2840;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+  width: 1200px;
+}
+
+header {
+  font-size: 26px;
+  font-weight: bold;
+  padding-top: 135px;
+  width: 100%;
+}
+
+header img {
+  margin-bottom: 70px;
+}
+
+nav {
+  text-transform: uppercase;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+nav li {
+  padding: 40px;
+}
+
+nav a {
+  color: #c2c2c2;
+}
+
+nav a.active {
+  color: #6db9ff;
+}
+
+main {
+  background-color: white;
+  color: #45494d;
+  padding: 80px 100px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 40px 0 30px 0;
+}
+
+h2 {
+  color: #3e59b2;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+h3 {
+  color: #3e59b2;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+article {
+  margin-bottom: 30px;
+}
+
+article figure {
+  margin-bottom: 50px;
+}
+
+main p {
+  margin: 0 120px;
+}
+
+main.team ul {
+  display: flex;
+  justify-content: space-between;
+  margin: 120px 120px;
+}
+
+main.team img {
+  display: block;
+}
+
+footer {
+  background-color: #e7e7e7;
+  color: #b2b2b2;
+  font-size: 20px;
+  padding: 40px 350px;
+  width: 100%;
+}
+
+footer p {
+  margin: 40px 0;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer li {
+  display: inline-block;
+}
+
+footer li a {
+  background: transparent url("images/icons_social-media.png") 0 0 no-repeat;
+  display: block;
+  height: 46px;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 46px;
+}
+
+footer li a.twitter   { background-position: 0 0; }
+footer li a.facebook  { background-position: 0px -46px; }
+footer li a.email     { background-position: 0px -92px; }
+footer li a.instagram { background-position: 0px -138px; }

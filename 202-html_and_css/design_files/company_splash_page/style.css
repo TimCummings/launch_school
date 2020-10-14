@@ -1,0 +1,70 @@
+@import url("whitespace-reset.css");
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  font: normal 20px "Nunito", sans-serif;
+}
+
+body {
+  align-items: center;
+  background: #2f2840 url("bg_body.gif") repeat;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+  width: 1000px;
+}
+
+header {
+  margin-bottom: 87px;
+  margin-top: 159px;
+}
+
+main {
+  background-color: white;
+  color: black;
+  padding: 90px 90px 69px 90px;
+}
+
+h2{
+  font: 600 36px "Nunito", sans-serif;
+  padding: 10px 0;
+}
+
+h3{
+  color: #3e98b2;
+  font: 800 24px "Nunito", sans-serif;
+  margin: 10px 0 20px 0;
+}
+
+section + section {
+  margin-top: 150px;
+}
+
+p {
+  margin-top: 10px;
+}
+
+footer {
+  background-color: #e7e7e7;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 142px;
+  padding: 33px 0;
+  width: 1000px;
+}
+
+footer img {
+  padding: 0 60px;
+}
+
+li {
+  display: inline-block;
+}
