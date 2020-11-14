@@ -1,0 +1,13 @@
+
+1. [Introduction to Objects](intro.md)
+2. [Object Properties](object_properties.md)
+3. [Stepping through Object Properties](stepping_through_object_properties.md)
+4. [Practice Problems: Working with Object Properties](practice-object_properties.md)
+5. [Arrays and Objects](arrays_and_objects.md)
+6. [Arrays: What is an Element?](array_elements.md)
+7. [Pure Functions and Side Effects](pure_functions.md)
+8. [Working with the Math Object](math_object.md)
+9. [Working with Dates](dates.md)
+10. [Working with Function Arguments](function_arguments.md)
+11. [Practice Problem: Welcome Stranger](practice-welcome_stranger.md)
+11. [Practice Problem: Repeated Characters](practice-repeated_characters.md)

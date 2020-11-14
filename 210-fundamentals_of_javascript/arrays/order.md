@@ -1,0 +1,11 @@
+
+1. [arrays.md](arrays.md)
+2. [Practice Problems: Arrays](practice-arrays.md)
+3. [Array Operations: push, pop, shift, and unshift](ops-push_pop_shift_unshift.md)
+4. [Array Operations: indexOf and lastIndexOf](ops-indexOf_lastIndexOf.md)
+5. [Array Operations: slice, split, concat, and join](ops-slice_split_concat_join.md)
+6. [Arrays and Operators](arrays_and_operators.md)
+7. [Practice Problem: Comparing Arrays](practice-comparing_arrays.md)
+8. [Practice Problems: Basic Array Uses](practice-basic_array_uses.md)
+9. [Practice Problems: Intermediate Array Uses](practice-intermediate_array_uses.md)
+10. [Practice Problem: Find Missing Numbers](practice-find_missing_numbers.md)

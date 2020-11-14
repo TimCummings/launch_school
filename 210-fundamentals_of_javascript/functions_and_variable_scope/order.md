@@ -1,0 +1,12 @@
+
+1. [Defining Functions](defining_functions.md)
+2. [Function Invocations and Arguments](function_invocations_and_arguments.md)
+3. [Practice Problems - Functions](practice-functions.md)
+4. [Nested Functions](nested_functions.md)
+5. [Functional Scopes and Lexical Scoping](functional_and_lexical_scope.md)
+6. [Function Declarations and Function Expressions](function_declarations_and_expressions.md)
+7. [Hoisting](hoisting.md)
+8. [Practice Problems - Variable Scopes in JavaScript 1](practice-variable_scopes_1.md)
+8. [Practice Problems - Variable Scopes in JavaScript 2](practice-variable_scopes_2.md)
+9. [Closures](closures.md)
+10. [Practice Problems: Logic and Flow Control](practice-logic_and_flow_control/)
