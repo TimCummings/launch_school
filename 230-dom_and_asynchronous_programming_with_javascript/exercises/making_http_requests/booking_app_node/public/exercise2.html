@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Exercise 2: Getting Schedules</title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <script>
+    function getSchedules() {
+      let request = new XMLHttpRequest();
+
+      request.open('GET', '/api/schedules');
+      request.timeout = 5000;
+      request.responseType = 'json';
+
+      request.addEventListener('load', event => {
+        let schedules = request.response;
+        let schedulesByStaff = {};
+
+        schedules.forEach(schedule => {
+          let key = `staff ${schedule.staff_id}`;
+          if (!schedulesByStaff[key]) schedulesByStaff[key] = 0;
+          schedulesByStaff[key] += 1;
+        });
+
+        if (Object.keys(schedulesByStaff).length > 0) {
+          alert(Object.keys(schedulesByStaff)
+                      .map(staff => `${staff}: ${schedulesByStaff[staff]}`)
+                      .join('\n'));
+        } else {
+          alert('There are currently no schedules available for booking.');
+        }
+      });
+
+      request.addEventListener('timeout', event => {
+        alert('It is taking longer than usual, please try again later.');
+      });
+
+      request.addEventListener('loadend', event => {
+        alert('The request has completed.');
+      });
+
+      request.send();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Exercise 3: Adding Staff</title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <main>
+    <form id="new_staff_form" action="/api/staff_members" method="post">
+      <fieldset>
+        <dl>
+          <dt><label for="email">Email:</label></dt>
+          <dd><input type="email" id="email" name="email"></input></dd>
+          <dt><label for="name">Name:</label></dt>
+          <dd><input type="text" id="name" name="name"></input></dd>
+        </dl>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+  <script>
+    function formIsEmpty(form) {
+      let fields = Array.from(form.querySelectorAll('input'));
+      if (fields.length === 0 || fields.some(f => f.value.trim() === '')) {
+        return true;
+      }
+
+      return false;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      let form = document.getElementById('new_staff_form');
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+
+        if (formIsEmpty(form)) {
+          alert('Staff can not be created. Check your inputs.');
+          return;
+        }
+
+        let data = new FormData(form);
+
+        let request = new XMLHttpRequest();
+        request.open('POST', '/api/staff_members');
+
+        request.addEventListener('load', event => {
+          if (request.status === 201) {
+            let data = JSON.parse(request.response);
+            alert(`Successfully created staff with id: ${data.id}`);
+            form.reset();
+          } else {
+            alert(`Request status: ${request.status} - ${request.responseText}`);
+          }
+        });
+
+        request.addEventListener('error', event => {
+          alert('Error! Request did not complete. Please try again.');
+        });
+
+        request.send(data);
+      });
+    });
+  </script>
+</body>
+</html>

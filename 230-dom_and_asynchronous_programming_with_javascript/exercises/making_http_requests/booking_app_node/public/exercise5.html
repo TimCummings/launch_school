@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Exercise 5: Booking Time Slots</title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <main>
+    <h1>Schedules</h1>
+    <form id="new_booking_form" action="/api/bookings" method="post">
+      <dl>
+        <dt><label for="schedule">Please select one schedule:</label></dt>
+        <dd>
+          <select id="schedule" name="schedule">
+          </select>
+        </dd>
+        <dt><label for="email">Email:</label></dt>
+        <dd><input type="email" name="email"></input></dt>
+      </dl>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+  <script src="./javascripts/exercise5.js"></script>
+</body>
+</html>

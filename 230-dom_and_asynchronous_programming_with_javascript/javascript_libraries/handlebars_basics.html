@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Practice: Handlebars Basics</title>
+  <meta charset="utf-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+</head>
+
+<body>
+  <script id="post" type="text/x-handlebars">
+    {{#each posts}}
+      <article>
+        <h1>{{this.title}}</h1>
+        <p><time>Posted on {{published}}</time></p>
+        {{{body}}}
+      </article>
+      <footer>
+        <p>Tags:
+          {{#each tags}}
+            {{> tagTemplate}}
+          {{else}}
+            Not tagged.
+          {{/each}}
+        </p>
+      </footer>
+    {{/each}}
+  </script>
+
+  <script id="tag" type="text/x-handlebars">
+    <strong>{{this}}</strong>
+  </script>
+
+  <script>
+    let post1 = {
+      title: 'Lorem ipsum dolor sit amet',
+      published: 'April 1, 2015',
+      body: '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>',
+      tags: ['Latin', 'cool', 'tech'],
+    };
+
+    let post2 = {
+      title: 'Maecenas vitae vehicula urna',
+      published: 'April 8, 2015',
+      body: '<p>Fusce eget aliquet felis. Integer sed eleifend ex, eu efficitur leo. Etiam vel tellus sed nulla tempor vehicula. Nunc sollicitudin velit nunc, quis facilisis justo laoreet non. Morbi faucibus tincidunt justo, a aliquet nibh cursus vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi risus turpis, congue sed tristique et, vulputate quis dui. Nulla facilisi. Nam placerat volutpat mollis. Nullam luctus, est vitae hendrerit venenatis, leo lacus suscipit mi, sed volutpat mi risus nec sem. Mauris ut sem mauris.</p>',
+    };
+
+    const posts = [post1, post2];
+
+    let postTemplate = Handlebars.compile(document.querySelector('#post').innerHTML);
+
+    let tagTemplateHTML = document.getElementById('tag').innerHTML;
+    let tagTemplate = Handlebars.compile(tagTemplateHTML);
+    Handlebars.registerPartial('tagTemplate', tagTemplateHTML);
+
+    document.body.insertAdjacentHTML('beforeend', postTemplate({ posts }));
+  </script>
+</body>
+</html>
